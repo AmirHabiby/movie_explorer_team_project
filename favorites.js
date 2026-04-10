@@ -1,37 +1,37 @@
-// Get containers
+
 const favoritesContainer = document.getElementById("favoritesContainer");
 
-// Load favorites on page load
+
 window.addEventListener("load", loadFavorites);
 
-// Add to favorites
+
 function addToFavorites(movie) {
   let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
-  // prevent duplicates
+  
 const exists = favorites.some(item => item.id === movie.id);
   if (exists) {
     alert("Already in favorites");
     return;
   }
 
-  // Add movie
+  
   favorites.push({
     id: movie.id,
     title: movie.title,
     poster: movie.poster
   });
 
-  // Save back to localStorage
+  
   localStorage.setItem("favorites", JSON.stringify(favorites));
 
-  // Reload favorites UI (only if function exists)
+  
   if (typeof loadFavorites === "function") {
     loadFavorites();
   }
 }
 
-// Remove from favorites
+
 function removeFromFavorites(id) {
   let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
@@ -42,7 +42,7 @@ function removeFromFavorites(id) {
   loadFavorites();
 }
 
-// Display favorites
+
 function loadFavorites() {
   if (!favoritesContainer) return;
 
@@ -75,7 +75,7 @@ const observer = new MutationObserver(() => {
   const cards = document.querySelectorAll("#movieContainer .card");
 
   cards.forEach((card, index) => {
-    // avoid duplicate buttons
+    
     if (card.querySelector(".favorite-btn")) return;
 
     const title = card.querySelector("p").textContent;
@@ -86,7 +86,7 @@ const observer = new MutationObserver(() => {
     button.classList.add("favorite-btn");
 
     button.onclick = (e) => {
-      e.stopPropagation(); // prevent modal opening
+      e.stopPropagation(); 
 
       addToFavorites({
             id: title + img,
@@ -101,7 +101,7 @@ const observer = new MutationObserver(() => {
   });
 });
 
-// start observing
+
 observer.observe(document.getElementById("movieContainer"), {
   childList: true
 });
