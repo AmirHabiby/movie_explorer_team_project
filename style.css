@@ -82,3 +82,39 @@ h1, h2, p {
     width: 200px;
   }
 }
+
+#favoritesContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.favorite-btn {
+  display: block;
+  margin: 8px auto;
+  padding: 6px 10px;
+  background: crimson;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.favorite-btn:hover {
+  background: darkred;
+}
+
+#modalFavoriteBtn {
+  margin-top: 15px;
+  padding: 10px 15px;
+  background: crimson;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#modalFavoriteBtn:hover {
+  background: darkred;
+}

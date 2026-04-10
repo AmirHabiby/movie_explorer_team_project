@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Movie App</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="favorites.css">
 </head>
 <body>
 
@@ -13,7 +14,8 @@
 
   <h2>Trending</h2>
   <div id="movieContainer"></div>
-
+  <h2>Favorites</h2>
+<div id="favoritesContainer"></div>
   <div id="movieModal" class="modal">
     <div class="modal-content">
       <span id="closeBtn">&times;</span>
@@ -23,6 +25,7 @@
       <div class="modal-info">
         <h2 id="movieTitle"></h2>
         <p id="movieDescription"></p>
+        <button id="modalFavoriteBtn">❤️ Add to Favorites</button>
         <div class="meta">
           <p><strong>Rating:</strong> <span id="movieRating"></span></p>
           <p><strong>Release Date:</strong> <span id="movieDate"></span></p>
@@ -32,5 +35,6 @@
   </div>
 
   <script src="script.js"></script>
+  <script src="favorites.js"></script>
 </body>
 </html>

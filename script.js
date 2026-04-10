@@ -43,6 +43,16 @@ function showMovieDetails(movie) {
   document.getElementById("movieDate").textContent = movie.release_date;
 
   movieModal.classList.add("show");
+
+  const btn = document.getElementById("modalFavoriteBtn");
+
+  btn.onclick = () => {
+    addToFavorites({
+      id: String(movie.id), 
+      title: movie.title,
+      poster: IMG_URL + movie.poster_path
+    });
+  };
 }
 document.getElementById("closeBtn").onclick = () => {
   movieModal.classList.remove("show");
