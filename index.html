@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>Welcome.</h1>
+  <p>Millions of movies, TV shows and people to discover. Explore now.</p>
+
+  <h2>Trending</h2>
+  <div id="movieContainer"></div>
+
+  <div id="movieModal" class="modal">
+    <div class="modal-content">
+      <span id="closeBtn">&times;</span>
+      
+      <img id="moviePoster" alt="Poster">
+      
+      <div class="modal-info">
+        <h2 id="movieTitle"></h2>
+        <p id="movieDescription"></p>
+        <div class="meta">
+          <p><strong>Rating:</strong> <span id="movieRating"></span></p>
+          <p><strong>Release Date:</strong> <span id="movieDate"></span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
