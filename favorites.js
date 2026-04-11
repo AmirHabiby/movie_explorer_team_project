@@ -15,7 +15,7 @@ const exists = favorites.some(item => item.id === movie.id);
     return;
   }
 
-  
+  //
   favorites.push({
     id: movie.id,
     title: movie.title,
