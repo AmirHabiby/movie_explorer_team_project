@@ -1,110 +1,192 @@
-body {
+/* =========================
+   GLOBAL RESET
+========================= */
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   font-family: Arial, sans-serif;
+}
+
+/* =========================
+   BODY
+========================= */
+body {
   background: #0d253f;
   color: white;
 }
 
-h1, h2, p {
+/* =========================
+   NAVBAR
+========================= */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #111;
+  padding: 15px 30px;
+}
+
+.navbar h1 {
+  font-size: 1.5rem;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
   margin-left: 20px;
 }
-#movieContainer {
+
+.navbar a:hover {
+  color: crimson;
+}
+
+/* =========================
+   HERO SECTION
+========================= */
+.hero {
+  text-align: center;
+  padding: 40px 20px;
+  background: #01b4e4;
+  color: black;
+}
+
+.hero h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+/* =========================
+   SECTION TITLES
+========================= */
+.movies-section h2 {
+  margin: 20px;
+}
+
+/* =========================
+   MOVIE GRID (HOME + FAVORITES)
+========================= */
+.movies-container,
+#movieContainer,
+#favoritesContainer {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 20px;
   padding: 20px;
 }
 
-.card {
-  cursor: pointer;
-  transition: transform 0.2s;
+/* =========================
+   MOVIE CARD DESIGN
+========================= */
+.movie-card {
+  background: #1a1a1a;
+  border-radius: 12px;
+  overflow: hidden;
+  text-align: center;
+  padding-bottom: 15px;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.card:hover {
+.movie-card:hover {
   transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.5);
 }
 
-.card img {
+/* IMAGE */
+.movie-card img {
   width: 100%;
-  border-radius: 10px;
+  height: 250px;
+  object-fit: cover;
 }
+
+/* TITLE */
+.movie-card h3 {
+  margin: 10px 0;
+  font-size: 1rem;
+  padding: 0 5px;
+}
+
+/* RATING TEXT */
+.movie-card p {
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+.movie-card button,
+.favorite-btn {
+  margin-top: 10px;
+  padding: 8px 12px;
+  border: none;
+  background: crimson;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.movie-card button:hover,
+.favorite-btn:hover {
+  background: darkred;
+}
+
+/* =========================
+   MODAL
+========================= */
 .modal {
-  display: none; 
+  display: none;
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: rgba(0,0,0,0.9);
   z-index: 1000;
   justify-content: center;
   align-items: center;
 }
+
 .modal.show {
   display: flex;
 }
+
 .modal-content {
   background: #1a1a1a;
-  color: white;
   padding: 30px;
   width: 90%;
   max-width: 800px;
   border-radius: 15px;
-  position: relative;
-  display: flex; 
+  display: flex;
   gap: 30px;
+  position: relative;
 }
 
+/* POSTER */
 #moviePoster {
-  width: 300px; 
-  height: auto;
+  width: 300px;
   border-radius: 10px;
 }
 
+/* MODAL INFO */
 .modal-info {
-  flex: 1; 
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
+/* CLOSE BUTTON */
 #closeBtn {
   position: absolute;
-  top: 10px; right: 20px;
+  top: 10px;
+  right: 20px;
   font-size: 30px;
   cursor: pointer;
 }
-@media (max-width: 700px) {
-  .modal-content {
-    flex-direction: column; 
-    align-items: center;
-    text-align: center;
-  }
-  #moviePoster {
-    width: 200px;
-  }
-}
 
-#favoritesContainer {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 20px;
-  padding: 20px;
-}
-
-.favorite-btn {
-  display: block;
-  margin: 8px auto;
-  padding: 6px 10px;
-  background: crimson;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.favorite-btn:hover {
-  background: darkred;
-}
-
+/* MODAL FAVORITE BUTTON */
 #modalFavoriteBtn {
   margin-top: 15px;
   padding: 10px 15px;
@@ -117,4 +199,24 @@ h1, h2, p {
 
 #modalFavoriteBtn:hover {
   background: darkred;
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+@media (max-width: 768px) {
+  .modal-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  #moviePoster {
+    width: 200px;
+  }
+
+  .navbar {
+    flex-direction: column;
+    gap: 10px;
+  }
 }

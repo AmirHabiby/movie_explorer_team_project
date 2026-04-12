@@ -3,38 +3,70 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Movie App</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="favorites.css">
+  <title>Movie Explorer</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
-  <h1>Welcome.</h1>
-  <p>Millions of movies, TV shows and people to discover. Explore now.</p>
+  <!-- ================= NAVBAR ================= -->
+  <header class="navbar">
+    <h1>🎬 Movie Explorer</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="favorites.html">Favorites</a>
+    </nav>
+  </header>
 
-  <h2>Trending</h2>
-  <div id="movieContainer"></div>
-  <h2>Favorites</h2>
-<div id="favoritesContainer"></div>
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <h2>Discover Your Favorite Movies</h2>
+    <p>Millions of movies, TV shows and people to discover. Explore now.</p>
+  </section>
+
+  <!-- ================= TRENDING MOVIES ================= -->
+  <section class="movies-section">
+    <h2>Trending Movies</h2>
+    <div id="movieContainer" class="movies-container"></div>
+  </section>
+
+  <!-- ================= FAVORITES PREVIEW (OPTIONAL UI ONLY) ================= -->
+  <section class="movies-section">
+    <h2>Favorites</h2>
+    <div id="favoritesContainer" class="movies-container"></div>
+  </section>
+
+  <!-- ================= MOVIE MODAL ================= -->
   <div id="movieModal" class="modal">
     <div class="modal-content">
+
+      <!-- Close Button -->
       <span id="closeBtn">&times;</span>
-      
-      <img id="moviePoster" alt="Poster">
-      
+
+      <!-- Poster -->
+      <img id="moviePoster" alt="Movie Poster">
+
+      <!-- Movie Info -->
       <div class="modal-info">
         <h2 id="movieTitle"></h2>
         <p id="movieDescription"></p>
+
         <button id="modalFavoriteBtn">❤️ Add to Favorites</button>
+
         <div class="meta">
           <p><strong>Rating:</strong> <span id="movieRating"></span></p>
           <p><strong>Release Date:</strong> <span id="movieDate"></span></p>
         </div>
       </div>
+
     </div>
   </div>
 
+  <!-- ================= SCRIPTS ================= -->
   <script src="script.js"></script>
   <script src="favorites.js"></script>
+
 </body>
 </html>

@@ -1,48 +1,38 @@
-
 const favoritesContainer = document.getElementById("favoritesContainer");
-
 
 window.addEventListener("load", loadFavorites);
 
-
+// ✅ Add to Favorites
 function addToFavorites(movie) {
   let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
-  
-const exists = favorites.some(item => item.id === movie.id);
+  const exists = favorites.some(item => item.id === movie.id);
   if (exists) {
     alert("Already in favorites");
     return;
   }
 
-  
   favorites.push({
     id: movie.id,
     title: movie.title,
     poster: movie.poster
   });
 
-  
   localStorage.setItem("favorites", JSON.stringify(favorites));
-
-  
-  if (typeof loadFavorites === "function") {
-    loadFavorites();
-  }
+  loadFavorites();
 }
 
-
+// ✅ Remove from Favorites
 function removeFromFavorites(id) {
   let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
   favorites = favorites.filter(movie => String(movie.id) !== String(id));
 
   localStorage.setItem("favorites", JSON.stringify(favorites));
-
   loadFavorites();
 }
 
-
+// ✅ Load Favorites UI
 function loadFavorites() {
   if (!favoritesContainer) return;
 
@@ -56,11 +46,11 @@ function loadFavorites() {
 
   favorites.forEach(movie => {
     const card = document.createElement("div");
-    card.classList.add("card");
+    card.classList.add("movie-card"); // ✅ MATCHES YOUR UI
 
     card.innerHTML = `
-      <img src="${movie.poster}" alt="${movie.title}">
-      <p style="text-align:center; margin:10px 0;">${movie.title}</p>
+      <img src="${movie.poster || 'https://via.placeholder.com/200x300'}" alt="${movie.title}">
+      <h3>${movie.title}</h3>
       <button class="favorite-btn" onclick="removeFromFavorites('${movie.id}')">
         Remove
       </button>
@@ -70,38 +60,40 @@ function loadFavorites() {
   });
 }
 
-
+// ✅ Observe movie cards and add Favorite button automatically
 const observer = new MutationObserver(() => {
-  const cards = document.querySelectorAll("#movieContainer .card");
+  const cards = document.querySelectorAll("#movieContainer .movie-card");
 
-  cards.forEach((card, index) => {
-    
+  cards.forEach(card => {
+
+    // prevent duplicate buttons
     if (card.querySelector(".favorite-btn")) return;
 
-    const title = card.querySelector("p").textContent;
-    const img = card.querySelector("img").src;
+    const title = card.querySelector("h3")?.textContent;
+    const img = card.querySelector("img")?.src;
 
     const button = document.createElement("button");
-    button.textContent = "❤️ Favorite";
+    button.textContent = "Add to Favorites";
     button.classList.add("favorite-btn");
 
     button.onclick = (e) => {
-      e.stopPropagation(); 
+      e.stopPropagation();
 
       addToFavorites({
-            id: title + img,
-  title: title,
-  poster: img
+        id: title + img,
+        title: title,
+        poster: img
       });
-
-      
     };
 
     card.appendChild(button);
   });
 });
 
-
-observer.observe(document.getElementById("movieContainer"), {
-  childList: true
-});
+// Start observing
+const movieContainer = document.getElementById("movieContainer");
+if (movieContainer) {
+  observer.observe(movieContainer, {
+    childList: true
+  });
+}
