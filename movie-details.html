@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie Details | ICOG Movie site</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/details.css">
+</head>
+<body class="details-body">
+  <header class="navbar">
+    <div class="logo">ICOG <span>Movie site</span></div>
+    <nav>
+      <a href="index.html">← Back to Movies</a>
+    </nav>
+  </header>
+
+  <main class="details-container">
+    <div class="details-page glass">
+      <div class="poster-section">
+        <img id="details-poster" src="" alt="Movie Poster">
+      </div>
+      <div class="info-section">
+        <h1 id="details-title">Movie Title</h1>
+        <div class="meta-tags">
+          <span class="badge">Rating: <span id="details-rating"></span></span>
+          <span class="badge">Release: <span id="details-release"></span></span>
+        </div>
+        <p id="details-description">Description</p>
+        <div class="details-actions">
+          <button id="detailsFavoriteBtn" class="btn-primary">Add to Watchlist</button>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="js/favorites.js"></script>
+  <script src="js/details.js"></script>
+</body>
+</html>
