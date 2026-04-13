@@ -1,0 +1,30 @@
+@media (max-width: 700px) {
+
+  .modal-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+  }
+
+  #moviePoster {
+    width: 200px;
+  }
+}
+@media (max-width: 600px) {
+
+  #movieContainer,
+  #favoritesContainer {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px;
+    padding: 10px;
+  }
+
+  h1, h2, p {
+    margin-left: 10px;
+  }
+
+  #moviePoster {
+    width: 180px;
+  }
+}

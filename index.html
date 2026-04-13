@@ -3,38 +3,85 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Movie App</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="favorites.css">
+  <title>ICOG Movie site | Explore Millions of Movies</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/favorites.css">
 </head>
 <body>
 
-  <h1>Welcome.</h1>
-  <p>Millions of movies, TV shows and people to discover. Explore now.</p>
+  <header class="navbar">
+    <div class="logo">ICOG <span>Movie site</span></div>
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Search for movies, TV shows...">
+      <button id="searchBtn">Search</button>
+    </div>
+    <nav>
+      <a href="#trending">Trending</a>
+      <a href="#favorites">Favorites</a>
+    </nav>
+  </header>
 
-  <h2>Trending</h2>
-  <div id="movieContainer"></div>
-  <h2>Favorites</h2>
-<div id="favoritesContainer"></div>
+  <main>
+    <section class="hero">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1>Welcome to ICOG Movie site.</h1>
+        <p>Millions of movies, TV shows and people to discover. Explore now.</p>
+        <div class="hero-stats">
+          <div class="stat"><span>20k+</span> Movies</div>
+          <div class="stat"><span>5k+</span> TV Shows</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="trending" class="movie-section">
+      <div class="section-header">
+        <h2>Trending Now</h2>
+        <div class="filters">
+          <button class="filter-btn active" data-type="movie">Movies</button>
+          <button class="filter-btn" data-type="tv">TV Shows</button>
+        </div>
+      </div>
+      <div id="movieContainer" class="movie-grid"></div>
+    </section>
+
+    <section id="favorites" class="movie-section favorites-section">
+      <div class="section-header">
+        <h2>Your Watchlist</h2>
+      </div>
+      <div id="favoritesContainer" class="movie-grid"></div>
+    </section>
+  </main>
+
   <div id="movieModal" class="modal">
-    <div class="modal-content">
-      <span id="closeBtn">&times;</span>
+    <div class="modal-content glass">
+      <span id="closeBtn" class="close-icon">&times;</span>
       
-      <img id="moviePoster" alt="Poster">
-      
-      <div class="modal-info">
-        <h2 id="movieTitle"></h2>
-        <p id="movieDescription"></p>
-        <button id="modalFavoriteBtn">❤️ Add to Favorites</button>
-        <div class="meta">
-          <p><strong>Rating:</strong> <span id="movieRating"></span></p>
-          <p><strong>Release Date:</strong> <span id="movieDate"></span></p>
+      <div class="modal-body">
+        <div class="poster-wrapper">
+          <img id="moviePoster" alt="Poster">
+        </div>
+        
+        <div class="modal-info">
+          <h2 id="movieTitle"></h2>
+          <div class="meta-tags">
+            <span id="movieRating" class="badge"></span>
+            <span id="movieDate" class="badge"></span>
+          </div>
+          <p id="movieDescription"></p>
+          <div class="modal-actions">
+            <button id="modalFavoriteBtn" class="btn-primary">Add to Watchlist</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <script src="script.js"></script>
-  <script src="favorites.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/favorites.js"></script>
 </body>
 </html>

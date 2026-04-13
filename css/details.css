@@ -1,0 +1,75 @@
+/* 
+   Details Page Styles 
+   ICOG Movie site Theme
+*/
+
+.details-body {
+  background: var(--bg-dark);
+}
+
+.details-container {
+  padding: 120px 5% 40px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.details-page {
+  display: flex;
+  gap: 50px;
+  padding: 50px;
+  border-radius: 40px;
+  max-width: 1100px;
+  width: 100%;
+}
+
+.details-page .poster-section {
+  flex-shrink: 0;
+  width: 350px;
+}
+
+.details-page .poster-section img {
+  width: 100%;
+  border-radius: 25px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--glass-border);
+}
+
+.details-page .info-section {
+  flex: 1;
+}
+
+.details-page #details-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.details-page #details-description {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  margin-bottom: 2.5rem;
+  line-height: 1.8;
+}
+
+.details-actions {
+  display: flex;
+  gap: 20px;
+}
+
+@media (max-width: 900px) {
+  .details-page {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+  }
+  .details-page .poster-section {
+    width: 250px;
+  }
+  .details-page #details-title {
+    font-size: 2.5rem;
+  }
+}
