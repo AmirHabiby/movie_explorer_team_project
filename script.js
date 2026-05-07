@@ -1,65 +1,133 @@
-const API_KEY = "16a1680d548eee0d6414390fc83c3878";
-const BASE_URL = "https://api.themoviedb.org/3";
-const IMG_URL = "https://image.tmdb.org/t/p/w500";
-
-const movieContainer = document.getElementById("movieContainer");
-const movieModal = document.getElementById("movieModal");
+console.log("Main JS Loaded");
 
 
-fetch(`${BASE_URL}/trending/movie/day?api_key=${API_KEY}`)
-  .then(res => res.json())
-  .then(data => displayMovies(data.results))
-  .catch(err => console.error(err));
+
+
+
+const sampleMovies = [
+
+    {
+
+        title: "Inception",
+
+        year: "2010",
+
+        poster: "https://via.placeholder.com/300x400"
+
+    },
+
+    {
+
+        title: "Interstellar",
+
+        year: "2014",
+
+        poster: "https://via.placeholder.com/300x400"
+
+    }
+
+];
+
+
+
+// Display Movies
 
 function displayMovies(movies) {
-  movieContainer.innerHTML = "";
-  movies.forEach(movie => {
-    const card = document.createElement("div");
-    card.classList.add("card");
 
-    const poster = movie.poster_path ? IMG_URL + movie.poster_path : "https://via.placeholder.com/150x225";
+    const container = document.getElementById("moviesContainer");
 
-    card.innerHTML = `
-      <img src="${poster}" alt="${movie.title}">
-      <p style="text-align:center; margin:10px 0;">${movie.title}</p>
-    `;
+    container.innerHTML = "";
 
-    card.addEventListener("click", () => getMovieDetails(movie.id));
-    movieContainer.appendChild(card);
-  });
-}
-function getMovieDetails(id) {
-  fetch(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`)
-    .then(res => res.json())
-    .then(movie => showMovieDetails(movie))
-    .catch(err => console.error(err));
-}
 
-function showMovieDetails(movie) {
-  document.getElementById("movieTitle").textContent = movie.title;
-  document.getElementById("moviePoster").src = IMG_URL + movie.poster_path;
-  document.getElementById("movieDescription").textContent = movie.overview;
-  document.getElementById("movieRating").textContent = movie.vote_average.toFixed(1) + "/10";
-  document.getElementById("movieDate").textContent = movie.release_date;
 
-  movieModal.classList.add("show");
+    movies.forEach(movie => {
 
-  const btn = document.getElementById("modalFavoriteBtn");
+        const card = document.createElement("div");
 
-  btn.onclick = () => {
-    addToFavorites({
-      id: String(movie.id), 
-      title: movie.title,
-      poster: IMG_URL + movie.poster_path
+        card.classList.add("movie-card");
+
+
+
+        card.innerHTML = `
+
+            <img src="${movie.poster}" alt="${movie.title}">
+
+            <div class="movie-info">
+
+                <h3>${movie.title}</h3>
+
+                <p>${movie.year}</p>
+
+            </div>
+
+        `;
+
+
+
+        container.appendChild(card);
+
     });
-  };
-}
-document.getElementById("closeBtn").onclick = () => {
-  movieModal.classList.remove("show");
-};
 
-window.onclick = (event) => {
-  if (event.target === movieModal) {
-    movieModal.classList.remove("show");
-  }
-};
+}
+
+
+
+
+
+displayMovies(sampleMovies);
+
+
+
+
+
+console.log("Favorites JS Loaded");
+
+
+
+function loadFavorites() {
+
+    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+    const container = document.getElementById("favoritesContainer");
+
+
+
+    container.innerHTML = "";
+
+
+
+    favorites.forEach(movie => {
+
+        const card = document.createElement("div");
+
+        card.classList.add("movie-card");
+
+
+
+        card.innerHTML = `
+
+            <img src="${movie.poster}" alt="${movie.title}">
+
+            <div class="movie-info">
+
+                <h3>${movie.title}</h3>
+
+                <p>${movie.year}</p>
+
+            </div>
+
+        `;
+
+
+
+        container.appendChild(card);
+
+    });
+
+}
+
+
+
+// Load on page start
+
+loadFavorites();
